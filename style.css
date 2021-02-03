@@ -1,0 +1,84 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  font-size: 16px;
+}
+
+.title {
+  font-size: 3em;
+  padding: 2rem 0 5rem 0;
+}
+
+.grid {
+  padding-top: 5rem;
+  display: flex;
+  max-width: 512px;
+  max-height: 512px;
+  flex-wrap: wrap;
+}
+
+.item {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #000;
+  background: yellow;
+}
+
+.black {
+  background: black;
+}
+
+.rainbow {
+}
+
+.maintain {
+  text-align: center;
+}
+
+.colorBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.colorBar>label {
+  display: block;
+  width: 150px;
+  margin-right: 0.5rem;
+}
+#labelBlack {
+  border-bottom-style: solid;
+  border-bottom-color: #000;
+  border-bottom-width: 5px;
+}
+
+#labelRainbow {
+  border-bottom-style: solid;
+  padding-bottom: 5px;
+  background: linear-gradient(
+    to right,
+    red 0%,
+    orange 18%,
+    yellow 36%,
+    green 54%,
+    blue 72%,
+    indigo 90%,
+    purple 100%
+    )
+    bottom
+    no-repeat;
+  background-size: 100% 5px;
+  }
+
+  #label10Black {
+    border-bottom-style: solid;
+    border-bottom-color: #e5e5e5;
+    border-bottom-width: 5px;
+  }
+
+  #labelChoose {
+    border-bottom-style: solid;
+    border-bottom-color: red;
+    border-bottom-width: 5px;
+  }

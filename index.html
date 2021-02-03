@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Etch-a-Sketch</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="maintain">
+      <h1 class="title">Etch-A-Sketch</h1>
+      <form class="colorBars">
+        <div class="colorBar">
+          <label for="radioBlack" id="labelBlack">BLACK</label>
+          <input 
+          type="radio" 
+          id="radioBlack" 
+          name="color" 
+          value="black" 
+          onchange="getSelectedColor()" checked="checked">
+        </div>
+        
+        <div class="colorBar">
+          <label for="radioRainbow" id="labelRainbow">RAINBOW</label>
+          <input 
+          type="radio" 
+          id="radioRainbow" 
+          name="color" 
+          value="rainbow" 
+          onchange="getSelectedColor()">
+        </div>
+
+        <div class="colorBar">
+          <label for="radio10Black" id="label10Black">10% BLACK</label>
+          <input 
+          type="radio" 
+          id="radio10Black" 
+          name="color" 
+          value="10black" 
+          onchange="getSelectedColor()">
+        </div>
+
+        <div class="colorBar">
+          <label for="radioChoose" id="labelChoose">CHOOSE</label>
+          <input 
+          type="radio" 
+          id="radioChoose" 
+          name="color" 
+          value="choose" 
+          onchange="getSelectedColor()">
+        </div>
+
+      </form>
+      <button class="reset">RESET</button>
+      <div class="pixelBar">
+        
+      </div>
+    </div>
+    <div class="grid"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
