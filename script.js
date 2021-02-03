@@ -1,31 +1,31 @@
-// getSelectedColor()가 실행됬을때
-// 클릭된 아이템은 클래스 item만 남기고 나머진 지워준다
-// 새로운 클래스가 들어가게 해야한다.
 
-/* 시작 */
-// 시작하고 drawGrid로 그려준다
-// 선택된 색상을 가져온다 getSelectedColor
-// 모든 그리드에 해당 색상의 클릭 이벤트를 추가한다.
+/* Begin */
+// Draw grid with drawGrid()
+// Get color with getSelectedColor()
+// Attach event handler to all items
 
-
-/* 색상 바꼈을 때 */
-// 선택된 색상을 가져오고
-// 모든 그리드에 전의 클릭 이벤트를 제거하고
-// 새로운 색상으로 클릭 이벤트를 추가한다.
+/** getSelectedColor() */ 
+// Clicked item -> rmove all classes except 'item' class
+// Add new class 
 
 
-/** 10black 일때 */
+/** When olor changed */
+// Get checked color
+// Remove all event handler from grid
+// Add event handler of new color
+
+/** 10black */
 // rgba(0, 0, 0, 0.1)
 // rgba(0, 0, 0, 0.2)
 // rgba(0, 0, 0, 0.3)
 // rgba(0, 0, 0, 0.4)
 // rgba(0, 0, 0, 0.5)
-// 이렇게 늘려주면 된다
+// Increse like this
 
 let divAmount = 16
 let isDrawing = false;
 
-// 판 그리기
+// Draw grid
 function drawGrid(divs) {
   document.querySelector('.grid').innerHTML = '';
   for(let i = 0; i < divs; i++) {
@@ -47,7 +47,7 @@ function drawGrid(divs) {
   getSelectedColor();
 }
 
-// 라디오 버튼 선택된 색상 value 가져오기
+// Get checked color
 function getSelectedColor() {
   const radio = document.querySelector('input[name="color"]:checked').value;
   console.log(radio);
@@ -55,12 +55,12 @@ function getSelectedColor() {
 }
 
 
-// 색상 그리기
+// Draw color
 function drawColors(color){
   const divItem = document.querySelectorAll('.item');
 
   divItem.forEach(item => {
-    // 이벤트 제거하기
+    // Remove Event
     item.removeEventListener('mousedown', mouseDown)
     item.removeEventListener('mouseover', mouseOver)
     
@@ -104,7 +104,7 @@ function drawColors(color){
 
 drawGrid(divAmount);
 
-// 리셋 버튼
+// Reset button
 const resetButton = document.querySelector('.reset');
 resetButton.addEventListener('click', () => {
   divAmount = prompt("How many divs?", 16);
