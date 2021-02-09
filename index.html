@@ -19,7 +19,7 @@
           id="radioBlack" 
           name="color" 
           value="black" 
-          onchange="getSelectedColor()">
+          checked="checked">
         </div>
         
         <div class="colorBar">
@@ -29,7 +29,7 @@
           id="radioRainbow" 
           name="color" 
           value="rainbow" 
-          onchange="getSelectedColor()" checked="checked">
+          >
         </div>
 
         <div class="colorBar">
@@ -39,17 +39,22 @@
           id="radio10Black" 
           name="color" 
           value="black10" 
-          onchange="getSelectedColor()">
+          >
         </div>
 
         <div class="colorBar">
-          <label for="radioChoose" id="labelChoose">CHOOSE</label>
+          <input
+          type="color"
+          id="labelChoose"
+          value="#01BEFE"
+          >
           <input 
           type="radio" 
           id="radioChoose" 
           name="color" 
           value="choose" 
-          onchange="getSelectedColor()">
+          >
+          
         </div>
 
       </form>

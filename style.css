@@ -81,7 +81,6 @@
   }
 
   #labelChoose {
+    width: 150px;
     border-bottom-style: solid;
-    border-bottom-color: red;
-    border-bottom-width: 5px;
   }
