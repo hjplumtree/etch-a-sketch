@@ -18,9 +18,11 @@
 // rgba(0, 0, 0, 0.1)
 // rgba(0, 0, 0, 0.2)
 // rgba(0, 0, 0, 0.3)
-// rgba(0, 0, 0, 0.4)
-// rgba(0, 0, 0, 0.5)
 // Increse like this
+
+/** CHOOSE */
+// 
+
 
 let divAmount = 16
 let isDrawing = false;
@@ -50,20 +52,22 @@ function drawGrid(divs) {
 // Get checked color
 function getSelectedColor() {
   const radio = document.querySelector('input[name="color"]:checked').value;
-  console.log(radio);
+  
   drawColors(radio);
 }
-
 
 // Draw color
 function drawColors(color){
   const divItem = document.querySelectorAll('.item');
+  console.log(color);
 
   divItem.forEach(item => {
-    // Remove Event
-    item.removeEventListener('mousedown', mouseDown)
-    item.removeEventListener('mouseover', mouseOver)
-    
+
+    item.addEventListener('mousedown', mouseDown);
+    item.addEventListener('mouseover', mouseOver);
+    // item.removeEventListener('mouseover', mouseOver)
+    // item.removeEventListener('mousedown', mouseDown)
+
     function randNum(){
       return Math.floor(Math.random() * 266)
     }
@@ -73,28 +77,72 @@ function drawColors(color){
     }
 
     function mouseDown(){
-      this.style.backgroundColor = "";
-      if(color === 'rainbow') {
-        this.style.backgroundColor = randColor();
+      console.log(color,1);
+      switch(color) {
+        case 'black':
+          this.style.backgroundColor = "";
+          this.className = 'item';
+          this.classList.add(color);
+          isDrawing = true;
+
+          break;
+
+        case 'rainbow':
+          this.className = 'item';
+          // console.log(this.className);
+
+          this.style.backgroundColor = "";
+          this.style.backgroundColor = randColor();
+          this.classList.add(color);
+          // console.log(color);
+
+          isDrawing = true;
+
+          break;
+
+        case 'black10':
+          if(!this.classList.contains('black10')){
+            console.log(this.className);
+            this.style.backgroundColor = '#000';
+            this.style.opacity = 0.1;
+            this.className = 'item';
+            this.classList.add(color);
+            // console.log(this.classList.contains('black10'));
+          } else {
+            this.style.opacity = parseFloat(this.style.opacity) + 0.1;
+            console.log('ahoy');
+          }
+          break;
       }
-      this.className = 'item';
-      this.classList.add(color);
-      isDrawing = true;
+
     }
 
     function mouseOver(){
       if(isDrawing === true) {
-        this.style.backgroundColor = "";
-
-        if(color === 'rainbow') {
-          this.style.backgroundColor = randColor();
+        switch(color) {
+          case 'black':
+            this.style.backgroundColor = "";
+            this.className = 'item';
+            this.classList.add(color);
+            break;
+          case 'rainbow':
+            this.style.backgroundColor = "";
+            this.style.backgroundColor = randColor();
+            this.className = 'item';
+            this.classList.add(color);
+            break;
         }
-        this.className = 'item';
-        this.classList.add(color);
+        
+        // this.style.backgroundColor = "";
+
+        // if(color === 'rainbow') {
+        //   this.style.backgroundColor = randColor();
+        // }
+        // this.className = 'item';
+        // this.classList.add(color);
+
       }
     }
-    item.addEventListener('mousedown', mouseDown);
-    item.addEventListener('mouseover', mouseOver);
   })
   
   window.addEventListener('mouseup', function mouseUp() {
