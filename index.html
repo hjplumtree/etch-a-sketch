@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Etch-a-Sketch</title>
+  <title>ETCH-A-SKETCH</title>
   <link rel="stylesheet" href="reset.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <h1 class="title">ETCH-A-SKETCH</h1>
   <div class="container">
     <div class="maintain">
-      <h1 class="title">Etch-A-Sketch</h1>
       <form class="colorBars">
         <div class="colorBar">
           <label for="radioBlack" id="labelBlack">BLACK</label>
@@ -54,13 +54,30 @@
           name="color" 
           value="choose" 
           >
-          
         </div>
-
       </form>
-      <button class="reset">RESET</button>
+      <button class="clear">CLEAR</button>
+
+      <hr class="dashed">
+
       <div class="pixelBar">
-        
+        <span>GRID SIZE</span>
+        <div class="sizeContainer">
+          <input 
+          class="sizebar" 
+          type="range" 
+          name="sizebar"
+          value="16" 
+          min="2" max="100"
+          oninput=showSize()
+          >
+          <input type="number" 
+          class="sizeValue"
+          min="2" max="100"
+          oninput=getSize()
+          >
+        </div>
+        <button class="sizeButton">CHANGE</button>
       </div>
     </div>
     <div class="grid"></div>

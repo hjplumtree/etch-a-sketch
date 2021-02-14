@@ -28,7 +28,6 @@
 // Color Picker 클릭되면 라디오 버튼 이동
 // 색상 value를 가져오는것 같다
 
-
 let divAmount = 16
 let isDrawing = false;
 
@@ -53,6 +52,8 @@ function drawGrid(divs) {
     square.style.width = grid;
     square.style.height = grid;
   })
+  showSize();
+  document.querySelector('.sizeButton').addEventListener('click', changeGridSize)
 }
 
 function randNum(){
@@ -65,7 +66,7 @@ function randColor() {
 
 function mouseDown(){
   let color = document.querySelector('input[name="color"]:checked').value;
-  console.log(color,1);
+  // console.log(color,1);
   switch(color) {
     case 'black':
       this.style.backgroundColor = "";
@@ -87,12 +88,12 @@ function mouseDown(){
     case 'black10':
       if(!this.classList.contains('black10')){
         this.style.backgroundColor = '#000';
-        this.style.opacity = 0.2;
+        this.style.opacity = 0.1;
         this.className = 'item';
         this.classList.add(color);
         isDrawing = true;
       } else {
-        this.style.opacity = parseFloat(this.style.opacity) + 0.2;
+        this.style.opacity = parseFloat(this.style.opacity) + 0.1;
         isDrawing = true;
       }
     break;
@@ -112,7 +113,6 @@ function mouseOver(){
   if(isDrawing === true) {
     switch(color) {
       case 'black':
-        console.log('11')
         this.style.backgroundColor = "";
         this.className = 'item';
         this.style.opacity = 1;
@@ -120,7 +120,6 @@ function mouseOver(){
       break;
 
       case 'rainbow':
-        console.log('22')
         this.style.backgroundColor = "";
         this.className = 'item';
         this.style.opacity = 1;
@@ -129,14 +128,13 @@ function mouseOver(){
       break;
 
       case 'black10':
-        console.log('33')
         if(!this.classList.contains('black10')){
           this.style.backgroundColor = '#000';
           this.className = 'item';
-          this.style.opacity = 0.2;
+          this.style.opacity = 0.1;
           this.classList.add(color);
         } else {
-          this.style.opacity = parseFloat(this.style.opacity) + 0.2;
+          this.style.opacity = parseFloat(this.style.opacity) + 0.1;
         }
       break;
 
@@ -155,13 +153,39 @@ window.addEventListener('mouseup', function mouseUp() {
 })
 
 drawGrid(divAmount);
+clearButton();
+// Clear button
+function clearButton() {
+  document.querySelector('.clear').addEventListener('click', () => {
+    const size = Number(document.querySelector('.sizebar').value);
+    drawGrid(size)
+  });
+}
 
-// Reset button
-const resetButton = document.querySelector('.reset');
-resetButton.addEventListener('click', () => {
-  divAmount = prompt("How many divs?", 16);
-  console.log(divAmount);
-  drawGrid(divAmount);
-})
 
+// 우선 한번 실행한다.
+// 현재 값을 보여준다.
 
+function showSize() {
+  let size = document.querySelector('.sizebar').value;
+  document.querySelector('.sizeValue').value = size;
+}
+
+function getSize() {
+  let size = document.querySelector('.sizeValue').value;
+  document.querySelector('.sizebar').value = size;
+}
+
+// 사이즈 버튼이 클릭되면
+// 확인창이 한번 뜬다
+// 바꾸면 지금까지 그린게 다 없어진다 진짜 바꿀거냐고
+// 확인 누르면 바꿔준다.
+
+function changeGridSize() {
+  const sizeButton = document.querySelector('.sizeButton');
+  const size = Number(document.querySelector('.sizebar').value);
+  const answer = confirm(`Delete your art and Change grid to ${size} x ${size}?`);
+    if(answer) {
+      drawGrid(size);
+    }
+}
